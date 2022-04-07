@@ -3,6 +3,7 @@ package com.project.customermanagement.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -82,21 +83,22 @@ public class CustomerController {
 	}
 
 	// find by email
-	@GetMapping("/findByEmail")
+	@GetMapping("/findByEmail/{email}")
 	public ResponseEntity<Customer> findByEmail(@PathVariable String email) {
-//		Customer customer = customerRepository.findById(id)
-//				.orElseThrow(() -> new ResourceNotFoundException("Customer does'nt exist with id: " + id));
-//		return ResponseEntity.ok(customer);
-		return null;
+		// Customer customer = customerRepository.findUserByEmail(email)
+		Customer customer = ((Optional<Customer>) customerRepository.findUserByEmail(email))
+				.orElseThrow(() -> new ResourceNotFoundException("Customer does'nt exist with Email : " + email));
+		return ResponseEntity.ok(customer);
+
 	}
 
+	// error
 	// find by mobile
-	@GetMapping("/findByMobile")
+	@GetMapping("/findByMobile/{mobile}")
 	public ResponseEntity<Customer> findByMobile(@PathVariable int mobile) {
-//		Customer customer = customerRepository.findById(id)
-//				.orElseThrow(() -> new ResourceNotFoundException("Customer does'nt exist with id: " + id));
-//		return ResponseEntity.ok(customer);
-		return null;
+		Customer customer = customerRepository.findByMobile(mobile)
+				.orElseThrow(() -> new ResourceNotFoundException("Customer does'nt exist with Mobile : " + mobile));
+		return ResponseEntity.ok(customer);
 	}
 
 }
