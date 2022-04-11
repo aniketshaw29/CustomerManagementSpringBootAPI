@@ -94,11 +94,11 @@ public class CustomerController {
 
 	// error
 	// find by mobile
-	@GetMapping("/findByMobile/{mobile}")
-	public ResponseEntity<Customer> findByMobile(@PathVariable int mobile) {
-		Customer customer = customerRepository.findByMobile(mobile)
-				.orElseThrow(() -> new ResourceNotFoundException("Customer does'nt exist with Mobile : " + mobile));
-		return ResponseEntity.ok(customer);
-	}
+//	@GetMapping("/findByMobile/{mobile}")
+//	public ResponseEntity<Customer> findByMobile(@PathVariable int mobile) {
+//		Customer customer = customerRepository.findByMobile(mobile)
+//				.orElseThrow(() -> new ResourceNotFoundException("Customer does'nt exist with Mobile : " + mobile));
+//		return ResponseEntity.ok(customer);
+//	}
 
 }

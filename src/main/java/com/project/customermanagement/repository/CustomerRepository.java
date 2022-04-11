@@ -17,6 +17,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	@Query(value = "SELECT * FROM Customer u WHERE u.email like %:email%", nativeQuery = true)
 	Optional<Customer> findUserByEmail(@Param("email") String email);
 
-	@Query(value = "SELECT * FROM Customer u WHERE u.mobile like mobile", nativeQuery = true)
-	Optional<Customer> findByMobile(@Param("mobile") int mobile);
+//	@Query(value = "SELECT * FROM Customer u WHERE u.mobile like mobile", nativeQuery = true)
+//	Optional<Customer> findByMobile(@Param("mobile") int mobile);
 }
